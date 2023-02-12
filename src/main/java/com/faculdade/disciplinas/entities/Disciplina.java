@@ -1,11 +1,83 @@
 package com.faculdade.disciplinas.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Disciplina {
 
 	@Id
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long disciplina_id;
+	
+	@Column(length = 50)
+	private String nome;
+	
+	@Column(length = 10, scale = 2)
+	private Double valor;
+	
+	@Column(length = 15)
+	private String status;
+	
+	@ManyToMany(mappedBy = "disciplinas")
+	private Set<Curso> cursos = new HashSet<>();
+	
+	@ManyToMany(mappedBy = "disciplinas")
+	private Set<Professor> professores = new HashSet<>();
+	
+	public Disciplina() {}
+
+	public Disciplina(Long disciplina_id, String nome, Double valor, String status) {
+		this.disciplina_id = disciplina_id;
+		this.nome = nome;
+		this.valor = valor;
+		this.status = status;
+	}
+
+	public Long getDisciplina_id() {
+		return disciplina_id;
+	}
+
+	public void setDisciplina_id(Long disciplina_id) {
+		this.disciplina_id = disciplina_id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Set<Curso> getCursos() {
+		return cursos;
+	}
+
+	public Set<Professor> getProfessores() {
+		return professores;
+	}
 }
