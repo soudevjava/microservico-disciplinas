@@ -12,6 +12,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
 @Entity
@@ -27,13 +29,13 @@ public class Disciplina {
 	@Column(length = 10, scale = 2)
 	private Double valor;
 	
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	private Status status;
 	
-	@ManyToMany(mappedBy = "disciplinas")
-	private Set<Curso> cursos = new HashSet<>();
-	
-	@ManyToMany(mappedBy = "disciplinas")
+	@ManyToMany
+	@JoinTable(name = "professor_leciona",
+		joinColumns = @JoinColumn(name = "disciplina_id"),
+		inverseJoinColumns = @JoinColumn(name = "professor_id"))
 	private Set<Professor> professores = new HashSet<>();
 	
 	public Disciplina() {}
@@ -75,10 +77,6 @@ public class Disciplina {
 
 	public void setStatus(Status status) {
 		this.status = status;
-	}
-
-	public Set<Curso> getCursos() {
-		return cursos;
 	}
 
 	public Set<Professor> getProfessores() {

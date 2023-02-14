@@ -34,10 +34,7 @@ public class Professor {
 	@Column(length = 11)
 	private String rg;
 		
-	@ManyToMany
-	@JoinTable(name = "professor_leciona",
-		joinColumns = @JoinColumn(name = "professor_id"),
-		inverseJoinColumns = @JoinColumn(name = "disciplina_id"))
+	@ManyToMany(mappedBy = "professores")
 	private Set<Disciplina> disciplinas = new HashSet<>();
 
 	public Long getProfessor_id() {

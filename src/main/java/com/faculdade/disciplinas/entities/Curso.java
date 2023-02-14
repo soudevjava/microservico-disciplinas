@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.faculdade.disciplinas.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,15 +30,15 @@ public class Curso {
 	
 	private LocalDate dataTermino;
 	
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	private Status status;
 	
 	private Integer periodo;
 	
 	@ManyToMany
 	@JoinTable(name = "lista_disciplina",
-		joinColumns = @JoinColumn(name = "curso_id"),
-		inverseJoinColumns = @JoinColumn(name = "disciplina_id"))
+		joinColumns = @JoinColumn(name = "disciplina_id"),
+		inverseJoinColumns = @JoinColumn(name = "curso_id"))
 	private Set<Disciplina> disciplinas = new HashSet<>();
 		
 	public Curso() {}

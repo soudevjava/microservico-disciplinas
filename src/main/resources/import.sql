@@ -1,5 +1,5 @@
-INSERT INTO curso(data_termino, nome, periodo, status) VALUES ('2023-02-01', 'Ads', 1, 0);
-INSERT INTO curso(data_termino, nome, periodo, status) VALUES ('2023-10-01', 'Web Design', 1, 0);
+INSERT INTO curso(data_termino, nome, periodo, status) VALUES ('2023-02-01', 'Ads', 1, 1);
+INSERT INTO curso(data_termino, nome, periodo, status) VALUES ('2023-10-01', 'Web Design', 1, 1);
 
 INSERT INTO disciplina(nome, status, valor) VALUES ('Prog. Orientada a Objetos', 1, 500.00);
 
