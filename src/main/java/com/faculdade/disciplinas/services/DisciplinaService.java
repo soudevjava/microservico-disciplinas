@@ -28,7 +28,7 @@ public class DisciplinaService {
 	
 	@Transactional(readOnly = true)
 	public List<Disciplina> buscarDisciplinaComCursoSemDTO() {
-		List<Disciplina> objs = repository.buscaDisciplinaComCurso();
+		List<Disciplina> objs = repository.findAll();
 		if(objs.isEmpty()) {
 			throw new RecursoNaoLocalizado("Recurso não localizado");
 		}

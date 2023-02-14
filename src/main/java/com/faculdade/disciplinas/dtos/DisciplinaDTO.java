@@ -14,7 +14,6 @@ public class DisciplinaDTO implements Serializable {
 	private Double valor;
 	private String status;
 
-	//private Set<CursoDTO> cursos = new HashSet<>();
 	private Set<ProfessorDTO> professores = new HashSet<>();
 
 	public DisciplinaDTO() {
@@ -35,7 +34,6 @@ public class DisciplinaDTO implements Serializable {
 		this.valor = entity.getValor();
 		this.status = entity.getStatus();
 
-		//cursos.addAll(entity.getCursos().stream().map(x -> new CursoDTO(x)).toList());
 		professores.addAll(entity.getProfessores().stream().map(x -> new ProfessorDTO(x)).toList());
 	}
 
@@ -70,10 +68,6 @@ public class DisciplinaDTO implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-//	public Set<CursoDTO> getCursos() {
-//		return cursos;
-//	}
 
 	public Set<ProfessorDTO> getProfessores() {
 		return professores;

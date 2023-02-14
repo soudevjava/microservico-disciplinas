@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.faculdade.disciplinas.dtos.DisciplinaDTO;
 import com.faculdade.disciplinas.entities.Disciplina;
 import com.faculdade.disciplinas.services.DisciplinaService;
 
