@@ -3,8 +3,12 @@ package com.faculdade.disciplinas.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.faculdade.disciplinas.enums.Status;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,8 +27,8 @@ public class Disciplina {
 	@Column(length = 10, scale = 2)
 	private Double valor;
 	
-	@Column(length = 15)
-	private String status;
+	@Enumerated(EnumType.STRING)
+	private Status status;
 	
 	@ManyToMany(mappedBy = "disciplinas")
 	private Set<Curso> cursos = new HashSet<>();
@@ -34,7 +38,7 @@ public class Disciplina {
 	
 	public Disciplina() {}
 
-	public Disciplina(Long disciplina_id, String nome, Double valor, String status) {
+	public Disciplina(Long disciplina_id, String nome, Double valor, Status status) {
 		this.disciplina_id = disciplina_id;
 		this.nome = nome;
 		this.valor = valor;
@@ -66,10 +70,10 @@ public class Disciplina {
 	}
 
 	public String getStatus() {
-		return status;
+		return status.toString();
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 

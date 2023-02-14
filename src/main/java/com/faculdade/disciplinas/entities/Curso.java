@@ -4,8 +4,12 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.faculdade.disciplinas.enums.Status;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,8 +29,8 @@ public class Curso {
 	
 	private LocalDate dataTermino;
 	
-	@Column(length = 50)
-	private String status;
+	@Enumerated(EnumType.STRING)
+	private Status status;
 	
 	private Integer periodo;
 	
@@ -38,7 +42,7 @@ public class Curso {
 		
 	public Curso() {}
 
-	public Curso(Long curso_id, String nome, String status, Integer periodo) {
+	public Curso(Long curso_id, String nome, Status status, Integer periodo) {
 		this.curso_id = curso_id;
 		this.nome = nome;
 		this.status = status;
@@ -70,10 +74,10 @@ public class Curso {
 	}
 
 	public String getStatus() {
-		return status;
+		return status.toString();
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
