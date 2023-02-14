@@ -34,7 +34,7 @@ public class DisciplinaDTO implements Serializable {
 		this.valor = entity.getValor();
 		this.status = entity.getStatus();
 
-		professores.addAll(entity.getProfessores().stream().map(x -> new ProfessorDTO(x)).toList());
+		entity.getProfessores().forEach(x -> this.professores.add(new ProfessorDTO(x)));
 	}
 
 	public Long getDisciplina_id() {

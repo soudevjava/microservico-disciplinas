@@ -16,23 +16,14 @@ public class DisciplinaService {
 
 	@Autowired
 	private DisciplinaRepository repository;
-
-//	@Transactional(readOnly = true)
-//	public List<DisciplinaDTO> buscarDisciplinaComCurso() {
-//		List<Disciplina> objs = repository.buscaDisciplinaComCurso();
-//		if(objs.isEmpty()) {
-//			throw new RecursoNaoLocalizado("Recurso não localizado");
-//		}
-//		return objs.stream().map(x -> new DisciplinaDTO(x)).toList();
-//	}
 	
 	@Transactional(readOnly = true)
-	public List<Disciplina> buscarDisciplinaComCursoSemDTO() {
+	public List<DisciplinaDTO> buscarDisciplinaComProfessores() {
 		List<Disciplina> objs = repository.findAll();
 		if(objs.isEmpty()) {
-			throw new RecursoNaoLocalizado("Recurso não localizado");
+			throw new RecursoNaoLocalizado("Nenhuma disciplina registrada");
 		}
-		return objs;
+		return objs.stream().map(x -> new DisciplinaDTO(x)).toList();
 	}
 
 }
