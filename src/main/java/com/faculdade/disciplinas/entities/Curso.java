@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.faculdade.disciplinas.dtos.CursoDTO;
 import com.faculdade.disciplinas.enums.Status;
 
 import jakarta.persistence.Column;
@@ -48,6 +49,13 @@ public class Curso {
 		this.status = status;
 		this.dataTermino = dataTermino;
 		this.periodo = periodo;
+	}
+
+	public Curso(CursoDTO dto) {
+		nome = dto.getNome();
+		status = Status.valueOf(dto.getStatus());
+		dataTermino = dto.getDataTermino();
+		periodo = dto.getPeriodo();
 	}
 
 	public Long getCurso_id() {

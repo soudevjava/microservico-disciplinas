@@ -1,25 +1,22 @@
 package com.faculdade.disciplinas.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.faculdade.disciplinas.dtos.CursoDTO;
 import com.faculdade.disciplinas.entities.Curso;
-import com.faculdade.disciplinas.enums.Status;
 import com.faculdade.disciplinas.repositories.CursoRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class CursoService{
-    private final CursoRepository cursoRepository;
+    
+	@Autowired
+	private CursoRepository repository;
 
-    public Curso novoCurso(CursoDTO curso) {
-        Curso novoCurso = new Curso();
-        novoCurso.setNome(curso.getNome());
-        novoCurso.setPeriodo(curso.getPeriodo());
-        novoCurso.setDataTermino(curso.getDataTermino());
-        novoCurso.setStatus(Status.valueOf(curso.getStatus()));
-        cursoRepository.save(novoCurso);
-
-        return novoCurso;
+	@Transactional(readOnly = true)
+    public CursoDTO novoCurso(CursoDTO dto) {
+        Curso novoCurso = new Curso(dto);
+        return new CursoDTO(repository.save(novoCurso));
     }
 }
