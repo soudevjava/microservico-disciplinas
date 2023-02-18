@@ -42,10 +42,11 @@ public class Curso {
 		
 	public Curso() {}
 
-	public Curso(Long curso_id, String nome, Status status, Integer periodo) {
+	public Curso(Long curso_id, String nome, LocalDate dataTermino, Status status, Integer periodo) {
 		this.curso_id = curso_id;
 		this.nome = nome;
 		this.status = status;
+		this.dataTermino = dataTermino;
 		this.periodo = periodo;
 	}
 
