@@ -9,7 +9,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,7 +32,7 @@ public class Disciplina {
 	@Enumerated(EnumType.ORDINAL)
 	private Status status;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name = "professor_leciona",
 		joinColumns = @JoinColumn(name = "disciplina_id"),
 		inverseJoinColumns = @JoinColumn(name = "professor_id"))
