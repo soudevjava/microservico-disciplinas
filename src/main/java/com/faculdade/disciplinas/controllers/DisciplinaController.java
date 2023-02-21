@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.faculdade.disciplinas.dtos.DisciplinaDTO;
+import com.faculdade.disciplinas.dtos.DisciplinaMinDTO;
 import com.faculdade.disciplinas.services.DisciplinaService;
 
 @RestController
@@ -17,7 +18,12 @@ public class DisciplinaController {
 	@Autowired
 	private DisciplinaService service;
 	
-	@GetMapping("/listar")
+	@GetMapping
+	public List<DisciplinaMinDTO> buscarDisciplinas(){
+		return service.buscarDisciplinas();
+	}
+	
+	@GetMapping("/professores")
 	public List<DisciplinaDTO> buscarDisciplinaComProfessores(){
 		return service.buscarDisciplinaComProfessores();
 	}

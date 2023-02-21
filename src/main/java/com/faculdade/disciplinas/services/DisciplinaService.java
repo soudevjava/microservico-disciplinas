@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.faculdade.disciplinas.dtos.DisciplinaDTO;
+import com.faculdade.disciplinas.dtos.DisciplinaMinDTO;
 import com.faculdade.disciplinas.entities.Disciplina;
 import com.faculdade.disciplinas.repositories.DisciplinaRepository;
 import com.faculdade.disciplinas.service.exception.RecursoNaoLocalizado;
@@ -16,6 +17,15 @@ public class DisciplinaService {
 
 	@Autowired
 	private DisciplinaRepository repository;
+	
+	@Transactional(readOnly = true)
+	public List<DisciplinaMinDTO> buscarDisciplinas() {
+		List<DisciplinaMinDTO> dtos = repository.buscarTodas();
+		if(dtos.isEmpty()) {
+			throw new RecursoNaoLocalizado("Nenhuma disciplina registrada");
+		}
+		return dtos;
+	}
 	
 	@Transactional(readOnly = true)
 	public List<DisciplinaDTO> buscarDisciplinaComProfessores() {
