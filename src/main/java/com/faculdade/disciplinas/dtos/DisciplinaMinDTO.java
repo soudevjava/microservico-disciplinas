@@ -1,12 +1,10 @@
 package com.faculdade.disciplinas.dtos;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import com.faculdade.disciplinas.entities.Disciplina;
 
-public class DisciplinaDTO implements Serializable {
+public class DisciplinaMinDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long disciplina_id;
@@ -14,12 +12,10 @@ public class DisciplinaDTO implements Serializable {
 	private Double valor;
 	private String status;
 
-	private Set<ProfessorMinDTO> professores = new HashSet<>();
-
-	public DisciplinaDTO() {
+	public DisciplinaMinDTO() {
 	}
 
-	public DisciplinaDTO(Long disciplina_id, String nome, Double valor, String status) {
+	public DisciplinaMinDTO(Long disciplina_id, String nome, Double valor, String status) {
 		super();
 		this.disciplina_id = disciplina_id;
 		this.nome = nome;
@@ -27,14 +23,12 @@ public class DisciplinaDTO implements Serializable {
 		this.status = status;
 	}
 
-	public DisciplinaDTO(Disciplina entity) {
+	public DisciplinaMinDTO(Disciplina entity) {
 		super();
 		this.disciplina_id = entity.getDisciplina_id();
 		this.nome = entity.getNome();
 		this.valor = entity.getValor();
 		this.status = entity.getStatus();
-
-		entity.getProfessores().forEach(x -> this.professores.add(new ProfessorMinDTO(x)));
 	}
 
 	public Long getDisciplina_id() {
@@ -67,10 +61,6 @@ public class DisciplinaDTO implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public Set<ProfessorMinDTO> getProfessores() {
-		return professores;
 	}
 
 }

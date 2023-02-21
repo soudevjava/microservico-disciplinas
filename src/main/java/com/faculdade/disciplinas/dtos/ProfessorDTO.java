@@ -39,7 +39,7 @@ public class ProfessorDTO implements Serializable{
 		email = entity.getEmail();
 		rg = entity.getRg();
 		
-		disciplinas.addAll(entity.getDisciplinas().stream().map(x -> new DisciplinaDTO(x)).toList());
+		//disciplinas.addAll(entity.getDisciplinas().stream().map(x -> new DisciplinaDTO(x, x.getProfessores())).toList());
 	}
 
 	public Long getProfessor_id() {

@@ -36,7 +36,7 @@ public class CursoDTO implements Serializable{
 		status = entity.getStatus();
 		periodo = entity.getPeriodo();
 		
-		disciplinas.addAll(entity.getDisciplinas().stream().map(x -> new DisciplinaDTO(x)).toList());
+		entity.getDisciplinas().forEach(x -> this.disciplinas.add(new DisciplinaDTO(x)));
 	}
 
 	public Long getCurso_id() {
