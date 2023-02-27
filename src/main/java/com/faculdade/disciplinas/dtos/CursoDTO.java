@@ -6,14 +6,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.faculdade.disciplinas.entities.Curso;
+import com.faculdade.disciplinas.enums.Status;
 
 public class CursoDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private Long curso_id;
+	private long curso_id;
 	private String nome;
 	private LocalDate dataTermino;
-	private String status;
+	private Status status;
 	private Integer periodo;
 	
 	private Set<DisciplinaDTO> disciplinas = new HashSet<>();
@@ -21,7 +22,7 @@ public class CursoDTO implements Serializable{
 	public CursoDTO() {
 	}
 	
-	public CursoDTO(Long curso_id, String nome, LocalDate dataTermino, String status, Integer periodo) {
+	public CursoDTO(Long curso_id, String nome, LocalDate dataTermino, Status status, Integer periodo) {
 		this.curso_id = curso_id;
 		this.nome = nome;
 		this.dataTermino = dataTermino;
@@ -33,7 +34,7 @@ public class CursoDTO implements Serializable{
 		curso_id = entity.getCurso_id();
 		nome = entity.getNome();
 		dataTermino = entity.getDataTermino();
-		status = entity.getStatus();
+		status = Status.valueOf(entity.getStatus());
 		periodo = entity.getPeriodo();
 		
 		entity.getDisciplinas().forEach(x -> this.disciplinas.add(new DisciplinaDTO(x)));
@@ -64,10 +65,13 @@ public class CursoDTO implements Serializable{
 	}
 
 	public String getStatus() {
-		return status;
+		if(status == null)
+			return null;
+		else
+		return status.toString();
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
