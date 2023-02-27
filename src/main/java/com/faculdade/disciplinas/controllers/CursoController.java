@@ -2,7 +2,10 @@ package com.faculdade.disciplinas.controllers;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,4 +28,8 @@ public class CursoController {
     	return service.novoCurso(dto);
     }
 
+    @GetMapping
+    public List<CursoDTO>listarCursos(){
+    	return service.listarCursos();
+    }
 }
