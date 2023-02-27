@@ -56,6 +56,20 @@ public class Curso {
 		dataTermino = dto.getDataTermino();
 		periodo = dto.getPeriodo();
 	}
+	
+	public Curso(CursoDTO dto, Long id) {
+		curso_id = id;
+		nome = dto.getNome();
+		status = Status.valueOf(dto.getStatus());
+		dataTermino = dto.getDataTermino();
+		periodo = dto.getPeriodo();
+		
+	}
+	
+	public Curso(Status status, Long id) {
+		curso_id= id;
+		this.status = status;		
+	}
 
 	public Long getCurso_id() {
 		return curso_id;
