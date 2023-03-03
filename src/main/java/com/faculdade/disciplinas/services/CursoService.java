@@ -17,12 +17,6 @@ public class CursoService {
 	@Autowired
 	private CursoRepository repository;
 
-	@Transactional(readOnly = true)
-	public CursoDTO novoCurso(CursoDTO dto) {
-		Curso novoCurso = new Curso(dto);
-		return new CursoDTO(repository.save(novoCurso));
-	}
-
 	@Transactional
 	public CursoDTO editCurso(long curso_id, CursoDTO dto) {
 		Curso dados = repository.getReferenceById(curso_id);
@@ -36,9 +30,10 @@ public class CursoService {
 		if(dto.getPeriodo() != null) {
 			dados.setPeriodo(dto.getPeriodo());
 		}
-		
-		
+				
 		return new CursoDTO(repository.save(dados));
+	}
+		
     public CursoDTO novoCurso(CursoDTO dto) {
         Curso novoCurso = new Curso(dto);
         return new CursoDTO(repository.save(novoCurso));
