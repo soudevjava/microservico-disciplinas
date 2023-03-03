@@ -22,8 +22,9 @@ public class CursoService{
         return new CursoDTO(repository.save(novoCurso));
     }
 
+	@Transactional(readOnly = true)
 	public List<CursoDTO> listarCursos() {
-		List<Curso> list = repository.buscaCursoComDisciplina();
+		List<Curso> list = repository.findAll();
 		return list.stream().map((x) -> new CursoDTO(x)).toList();
 	}
 }
