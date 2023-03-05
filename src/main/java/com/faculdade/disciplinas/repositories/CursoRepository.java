@@ -6,4 +6,5 @@ import com.faculdade.disciplinas.entities.Curso;
 
 public interface CursoRepository extends JpaRepository<Curso, Long> {
 
+	
 }
