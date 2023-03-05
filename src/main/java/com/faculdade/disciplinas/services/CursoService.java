@@ -44,4 +44,12 @@ public class CursoService {
 		List<Curso> list = repository.findAll();
 		return list.stream().map((x) -> new CursoDTO(x)).toList();
 	}
+
+	@Transactional
+	public void deleteCurso(long curso_id) {
+		repository.deleteById(curso_id);
+		
+	}
+	
+	
 }
